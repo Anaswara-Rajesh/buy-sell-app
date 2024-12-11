@@ -1,9 +1,10 @@
 import React from 'react'
+import RegisterSection from '../components/RegisterSection'
 
 function RegisterPage() {
-  return (
-    <div>RegisterPage</div>
-  )
+    return (
+        <RegisterSection />
+    )
 }
 
 export default RegisterPage
