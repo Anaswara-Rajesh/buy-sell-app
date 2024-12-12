@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const BASE_URL = process.env.BASE_URL || 'https://ads.planetmedia.app';
-const API_KEY = "b2f16a0e-655a-4044-a5a8-973b9b9c30d7";
+const API_KEY = process.env.API_KEY;
 
 const api = axios.create({
     baseURL: BASE_URL,
