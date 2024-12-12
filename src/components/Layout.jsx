@@ -6,7 +6,7 @@ const Layout = ({ children }) => {
     return (
         <div className="min-h-screen bg-[#FFFFFF] flex flex-col justify-between">
             <Header />
-            <div className="flex-grow py-32">
+            <div className="flex-grow py-36">
                 {children}
             </div>
             <Footer />

@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import api from "../services/api";
 import AdSection from "../components/AdSection";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const UserProfile = () => {
+  const navigate = useNavigate();
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -23,14 +25,13 @@ const UserProfile = () => {
     fetchUserProfile();
   }, []);
 
+  function handleEdit() {
+    navigate('/edit-profile')
+  }
+
+
   if (loading) {
-    return (
-      <>
-        <div className="flex justify-center items-center h-screen">
-          <p className="text-gray-500">Loading profile...</p>
-        </div>
-      </>
-    );
+    return <div>Loading...</div>;
   }
 
   if (!user) {
@@ -55,14 +56,14 @@ const UserProfile = () => {
             />
             <div>
               <h2 className="md:text-2xl text-xl font-semi-bold text-[#333333] pb-1">
-                {user.email}
+                {user.firstName ? `${user.firstName + '  ' + user.lastName}` : user.email}
               </h2>
               <p className="text-[#667085] pb-1">Member since</p>
               <p className="text-[#667085]"> 2019</p>
             </div>
           </div>
 
-          <button className="ml-auto bg-white text-[#667085] px-4 py-4 rounded-full border hover:bg-gray-200">
+          <button onClick={handleEdit} className="ml-auto bg-white text-[#667085] px-4 py-4 rounded-full border hover:bg-gray-200">
             Edit Profile
           </button>
         </div>
@@ -76,7 +77,7 @@ const UserProfile = () => {
           <div className="border-l border-gray-200 h-6"></div>
           <p className="text-sm text-gray-500 flex items-center space-x-2">
             <img src="/assets/support.svg" alt="Support Email" className="h-4 w-4" />
-            <span className="text-[#344054]">{"support@Xgenious.com"}</span>
+            <span className="text-[#344054]">{user.email || "support@Xgenious.com"}</span>
           </p>
           <div className="border-l border-gray-200 h-6"></div>
           <p className="text-sm text-gray-500 flex items-center space-x-2">

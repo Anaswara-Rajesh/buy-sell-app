@@ -7,7 +7,7 @@ const Breadcrumb = () => {
         "my-account": "My Profile",
         "profile": "Profile",
         "ads": "Ads",
-        "post-ad": "Post Ad",
+        "ad-post": "Post Ad",
     };
 
     return (

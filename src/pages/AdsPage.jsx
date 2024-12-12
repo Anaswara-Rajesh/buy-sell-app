@@ -1,8 +1,9 @@
 import React from 'react'
+import AdSection from '../components/AdSection'
 
 function AdsPage() {
     return (
-        <div>Ads List</div>
+        <AdSection/>
     )
 }
 

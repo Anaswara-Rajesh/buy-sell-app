@@ -10,18 +10,14 @@ function AdSection() {
         const fetchAds = async () => {
             try {
                 const response = await api.get('/api/advertisements');
-                if (Array.isArray(response) && response.length === 0) {
-                    setAds([]);
-                    setLoading(false);
-                    return;
-                }
-                if (response.length > 0) {
-                    setAds(response);
+                console.log(response, "response>>");
+                if (response.data && Array.isArray(response.data) && response.data.length > 0) {
+                    setAds(response.data);
                 } else {
                     throw new Error('No advertisements available...');
                 }
             } catch (error) {
-                setError(error.message);
+                setError(error.message || 'An error occurred while fetching advertisements');
             } finally {
                 setLoading(false);
             }
@@ -56,7 +52,7 @@ function AdSection() {
                             {ad.title}
                         </h3>
                         <p className="text-sm text-[#667085] mb-6">
-                            {ad.description} <span className="text-[#524EB7]">• 24hrs ago</span>
+                            Dellas, Texas <span className="text-[#524EB7]">• 24hrs ago</span>
                         </p>
                         <p className="md:text-2xl text-xl font-semibold text-[#333333] mt-2 mb-8">
                             ${ad.price}
