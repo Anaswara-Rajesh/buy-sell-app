@@ -7,8 +7,9 @@ function Header() {
     const handleSignInClick = () => {
         navigate('/');
     };
+
     return (
-        <header className="bg-white shadow-lg shadow-[#ededed]">
+        <header className="bg-white shadow-lg shadow-[#ededed] fixed top-0 left-0 w-full z-50">
             <div className="container mx-auto px-4 py-5 flex justify-between items-center flex-wrap">
                 {/* Logo */}
                 <img src="/assets/logo.svg" alt="Listbnb Logo" className="h-9" />
