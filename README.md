@@ -27,6 +27,7 @@ npm
 1) git clone https://github.com/Anaswara-Rajesh/buy-sell-app.git
 2) cd buy-sell-app
 3) npm install
+5) create a .env file root folder and place REACT_APP_BASE_URL = "your base url"  and REACT_APP_API_KEY="your api key"
 4) npm start
 5) Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
