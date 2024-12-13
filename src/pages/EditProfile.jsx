@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import InputField from '../components/InputField';
 import toast from 'react-hot-toast';
 import api from '../services/api';
@@ -78,8 +78,7 @@ function EditProfile() {
 
         setIsSubmitting(true);
         try {
-            const response = await api.put('/api/profile', formData
-            );
+            const response = await api.put('/api/profile', formData);
             if (response.status === 200) {
                 toast.success('Profile updated successfully!');
                 navigate('/my-account');
@@ -98,7 +97,7 @@ function EditProfile() {
 
     return (
         <main
-            className="bg-white items-center py-16 px-44 rounded-lg"
+            className="bg-white items-center py-6 px-4 sm:px-8 md:px-16 lg:py-18 lg:px-16 xl:px-44 xl:py-16 rounded-lg "
             style={{
                 boxShadow: 'rgb(147 184 209 / 30%) 0px 1px 2px 0px, rgb(133 133 133 / 15%) 0px 2px 6px 2px',
             }}
@@ -153,18 +152,6 @@ function EditProfile() {
                 {errors.username && <p className="text-red-500 text-sm">{errors.username}</p>}
 
                 <InputField
-                    label="Phone"
-                    margin="mb-7"
-                    type="text"
-                    placeholder="Enter your phone number"
-                    name="phone"
-                    value={formData.phone}
-                    handleChange={handleChange}
-                    error={errors.phone}
-                />
-                {errors.phone && <p className="text-red-500 text-sm">{errors.phone}</p>}
-
-                <InputField
                     label="Location"
                     margin="mb-7"
                     type="text"
@@ -175,6 +162,20 @@ function EditProfile() {
                     error={errors.location}
                 />
                 {errors.location && <p className="text-red-500 text-sm">{errors.location}</p>}
+
+                <InputField
+                    label="Contact Number"
+                    margin="mb-12"
+                    type="text"
+                    placeholder="Enter your phone number"
+                    name="phone"
+                    value={formData.phone}
+                    handleChange={handleChange}
+                    error={errors.phone}
+                />
+                {errors.phone && <p className="text-red-500 text-sm">{errors.phone}</p>}
+
+
 
                 <button
                     type="submit"
@@ -188,7 +189,7 @@ function EditProfile() {
                 </button>
             </form>
         </main>
-    )
+    );
 }
 
-export default EditProfile
+export default EditProfile;

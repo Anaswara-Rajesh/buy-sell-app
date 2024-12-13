@@ -7,7 +7,7 @@ function Header() {
     const navigate = useNavigate();
 
     const handleLogoClick = () => {
-        navigate('/home');
+        navigate('/');
     };
 
     const handleSignInClick = () => {
@@ -25,11 +25,9 @@ function Header() {
     return (
         <header className="bg-white shadow-lg shadow-[#ededed] fixed top-0 left-0 w-full z-50">
             <div className="container mx-auto px-4 py-5 flex justify-between items-center flex-wrap">
-                {/* Logo */}
-                <img src="/assets/logo.svg" alt="Listbnb Logo" className="h-9" onClick={handleLogoClick}/>
+                <img src="/assets/logo.svg" alt="Listbnb Logo" className="h-9" onClick={handleLogoClick} />
 
                 <div className="flex items-center gap-4">
-                    {/* Sign In Button */}
                     <button
                         onClick={handleSignInClick}
                         className="hidden sm:flex items-center text-black font-semibold hover:text-pink-500"
@@ -39,7 +37,6 @@ function Header() {
                         Sign In
                     </button>
 
-                    {/* Post Your Ad Button */}
                     <button
                         onClick={handlePostAdClick}
                         className="text-sm sm:text-base px-4 sm:px-5 py-2 sm:py-3 bg-[#F50963] text-white rounded-full hover:bg-pink-600 flex items-center"
