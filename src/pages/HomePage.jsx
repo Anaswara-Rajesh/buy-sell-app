@@ -6,8 +6,9 @@ import Recommendations from '../components/Recommendations'
 function HomePage() {
   return (
     <>
-    <LandingSection/>
-    <Recommendations/></>
+      <LandingSection />
+      <Recommendations />
+    </>
   )
 }
 

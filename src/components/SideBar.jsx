@@ -1,9 +1,10 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 
 const Sidebar = () => {
     const location = useLocation();
+    const navigate = useNavigate();
     const [activeLink, setActiveLink] = useState(location.pathname);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -12,12 +13,17 @@ const Sidebar = () => {
         setIsMenuOpen(false);
     }, [location]);
 
+    const handleLogout = () => {
+        localStorage.removeItem("jwt");
+        navigate("/login");
+    };
+
     const menuItems = [
         { path: "/my-account", label: "My Account" },
         { path: "/edit-profile", label: "Profile" },
         { path: "/ads", label: "Ads" },
         { path: "/add-post", label: "Post Ad" },
-        { path: "/logout", label: "Logout" },
+        { path: "/logout", label: "Logout", onClick: handleLogout },
     ];
 
     return (
@@ -28,7 +34,6 @@ const Sidebar = () => {
                     "rgb(147 184 209 / 30%) 0px 1px 2px 0px, rgb(133 133 133 / 15%) 0px 2px 6px 2px",
             }}
         >
-            {/* Mobile Menu Toggle */}
             <div className="lg:hidden flex justify-end p-4">
                 <button
                     className="text-gray-500 text-2xl"
@@ -44,16 +49,29 @@ const Sidebar = () => {
             >
                 {menuItems.map((item) => (
                     <li key={item.path}>
-                        <Link
-                            to={item.path}
-                            className={`block transition-all px-4 py-3 text-lg ${activeLink === item.path
-                                ? "bg-black w-full text-white rounded-full"
-                                : "hover:text-black"
-                                }
-              ${item.label === "Post Ad" ? "text-[#F50963]" : "text-gray-700"}`}
-                        >
-                            {item.label}
-                        </Link>
+                        {item.label === "Logout" ? (
+                            <button
+                                onClick={item.onClick}
+                                className={`block transition-all px-4 py-3 text-lg ${activeLink === item.path
+                                    ? "bg-black w-full text-white rounded-full"
+                                    : "hover:text-black"
+                                    }
+                                  ${item.label === "Post Ad" ? "text-[#F50963]" : "text-gray-700"}`}
+                            >
+                                {item.label}
+                            </button>
+                        ) : (
+                            <Link
+                                to={item.path}
+                                className={`block transition-all px-4 py-3 text-lg ${activeLink === item.path
+                                    ? "bg-black w-full text-white rounded-full"
+                                    : "hover:text-black"
+                                    }
+                                  ${item.label === "Post Ad" ? "text-[#F50963]" : "text-gray-700"}`}
+                            >
+                                {item.label}
+                            </Link>
+                        )}
                     </li>
                 ))}
             </ul>

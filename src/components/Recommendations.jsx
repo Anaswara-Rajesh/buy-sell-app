@@ -62,11 +62,13 @@ const recommendations = [
 
 const Recommendations = () => {
   return (
-    <section className="flex flex-col justify-center items-center px-10 py-28">
-      <p className="tracking-widest text-[#F50963] pb-3">What’s new</p>
-      <h2 className="text-4xl font-semibold mb-6">Fresh Recommendations</h2>
+    <section className="min-h-screen flex flex-col justify-center items-center px-4 lg:px-10 py-28">
+      <div className="flex flex-col justify-center items-center mb-6">
+        <p className="tracking-widest text-[#F50963] pb-3">What’s new</p>
+        <h2 className="text-2xl lg:text-4xl font-semibold mb-6">Fresh Recommendations</h2>
+      </div>
 
-      <container className="w-full flex justify-between items-center mb-6 px-36">
+      <div className="w-full flex justify-between items-center mb-6 px-4 lg:px-36">
         <p className="text-[#F50963] font-semibold text-lg">
           33 <span className="text-[#212121]">Items</span>
         </p>
@@ -74,14 +76,17 @@ const Recommendations = () => {
           <img src='/assets/Tab.svg' alt="Tab Icon" className="cursor-pointer transition" />
           <img src='/assets/Tab2.svg' alt="Tab Icon" className="cursor-pointer transition" />
         </div>
-      </container>
+      </div>
 
-      <container className="grid grid-cols-4 gap-8 px-36">
+      <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-8 px-4 lg:px-36">
         {recommendations.map((item) => (
           <ProductCard key={item.id} {...item} />
         ))}
-      </container>
+      </div>
     </section>
+
+
+
   );
 };
 
